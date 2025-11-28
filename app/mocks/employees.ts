@@ -101,13 +101,13 @@ export const employeesDataSource: DataSource<Employee> = {
     return resJson;
   },
   validate: z.object({
-    name: z.string({ required_error: 'Name is required' }).nonempty('Name is required'),
-    age: z.number({ required_error: 'Age is required' }).min(18, 'Age must be at least 18'),
+    name: z.string().nonempty('Name is required'),
+    age: z.number().min(18, 'Age must be at least 18'),
     joinDate: z
-      .string({ required_error: 'Join date is required' })
+      .string()
       .nonempty('Join date is required'),
     role: z.enum(['Market', 'Finance', 'Development'], {
-      errorMap: () => ({ message: 'Role must be "Market", "Finance" or "Development"' }),
+      message: 'Role must be "Market", "Finance" or "Development"',
     }),
   })['~standard'].validate,
 };
