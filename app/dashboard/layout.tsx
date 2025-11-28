@@ -2,24 +2,14 @@
 import * as React from "react";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import { PageContainer } from "@toolpad/core/PageContainer";
-import { useActivePage } from "@toolpad/core";
-// import { useParams } from "next/";
 import invariant from "invariant";
-import { useParams } from "next/navigation";
+import { useDashboardBreadcrumbs } from "./useDashboardBreadcrumbs";
 
 // Dashboard layout for all dashboard pages
 // Handles sidebar, navigation, and propagates breadcrumbs
 export default function DashboardPagesLayout({ children }: { children: React.ReactNode }) {
-  const params = useParams<{ id?: string }>();
-  const activePage = useActivePage();
-  invariant(activePage, 'No navigation match');
-
-  let breadcrumbs = [...activePage.breadcrumbs];
-  if (params.id !== undefined && params.id !== null && params.id !== "") {
-    const title = `${params.id}`;
-    const path = `${activePage.path}/${params.id}`;
-    breadcrumbs = [...breadcrumbs, { title, path }];
-  }
+	const breadcrumbs = useDashboardBreadcrumbs();
+	invariant(breadcrumbs, 'No navigation match');
 
   return (
     <DashboardLayout>
