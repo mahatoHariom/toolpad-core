@@ -1,6 +1,6 @@
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { PersonPinCircleOutlined } from '@mui/icons-material';
+import { CopyAll, PersonPinCircleOutlined } from '@mui/icons-material';
 import { Chip } from '@mui/material';
 import type { Navigation } from '@toolpad/core/AppProvider';
 
@@ -26,6 +26,12 @@ const NAVIGATION: Navigation = [
     title: 'Employees',
     icon: <PersonPinCircleOutlined />,
     pattern: 'employees{/:employeeId}*',
+  },
+  {
+    segment: 'tasks',
+    title: 'Tasks',
+    icon: <CopyAll />,
+    pattern: 'tasks{/:taskId}*',
   },
   { kind: 'divider' },
 ];

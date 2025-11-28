@@ -4,6 +4,8 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import './globals.css';
 import NAVIGATION from './config/navigation';
 import BRANDING from './config/branding';
+import Provider from './Provider';
+
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   
@@ -19,7 +21,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
               // session={session}
               // authentication={AUTHENTICATION}
             >
-              {props.children}
+              <Provider>{props.children}</Provider>
+             
             </NextAppProvider>
           </AppRouterCacheProvider>
         {/* </SessionProvider> */}
